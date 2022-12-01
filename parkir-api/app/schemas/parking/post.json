@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["plate", "typeId", "color", "clockIn"],
+    "properties": {
+        "plate": {
+            "type": "string",
+            "minLength": 4,
+            "errorMessage": {
+                "minLength": "Plate should be greater than 4 character.",
+                "type": "Plate must be string"
+            }
+        },
+        "typeId": { 
+            "type": "number",
+            "errorMessage": {
+                "type": "Please select one of options."
+            }
+        },
+        "color": { "type": "string" },
+        "clockIn": { 
+            "type": "string",
+            "format": "dateLongIndo",
+            "errorMessage": {
+                "format": "Clock In must be string date with YYYY-MM-DD hh:mm:ss hours format.",
+                "type": "Clock In must be string date"
+            }
+        },
+        "description": {
+            "type": ["string", "null"],
+            "default": null
+        },
+        "status": {
+            "type": "boolean",
+            "enum": [true, false],
+            "default": true
+        }
+    },
+    "additionalProperties": false,
+    "errorMessage": {
+        "type": "should be an object",
+        "required": {
+            "plate": "Plate is required!",
+            "typeID": "Type Transport is required!",
+            "color": "Transport color is required!",
+            "clockIn": "Clock In is required!"
+        }
+    }
+}

@@ -50,6 +50,10 @@ AjvErrors(ajvInit);
 
 const ajvPlugin = () => {
     /* eslint-disable no-useless-escape */
+    ajvInit.addFormat(
+        'dateLongIndo',
+        /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9]) (2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?$/,
+    );
     ajvInit.addFormat('dateShortIndo', /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])/);
     ajvInit.addFormat('24-hours-time', /^(?:2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$/);
     ajvInit.addFormat('12-hours-time', /^(?:1[0-2]|0[0-9]):[0-5][0-9]:[0-5][0-9]$/);

@@ -10,6 +10,7 @@ services:
             POSTGRES_PASSWORD: 'username'
             POSTGRES_DB: 'parkir'
         volumes:
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
             - data:/var/lib/postgresql/data
         restart: always
         ports:
@@ -19,7 +20,7 @@ services:
         build: ./parkir-api
         container_name: parkir-api
         ports:
-            - "3000:3000"
+            - "5000:3000"
         depends_on:
             - parkir-db
         volumes:

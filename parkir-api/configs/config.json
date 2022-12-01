@@ -1,0 +1,28 @@
+{
+    "development": {
+        "parkir-db": {
+            "username": "password",
+            "password": "username",
+            "database": "parkir",
+            "host": "parkir-db",
+            "port": "5432",
+            "dialect": "postgres",
+            "synchronize": true,
+            "timezone": "+7:00",
+            "logging": false
+        }
+    },
+    "production": {
+        "parkir-db": {
+            "username": "password",
+            "password": "username",
+            "database": "parkir-db",
+            "host": "parkir-db",
+            "port": "5432",
+            "dialect": "postgres",
+            "synchronize": true,
+            "timezone": "+7:00",
+            "logging": false
+        }
+    }
+}

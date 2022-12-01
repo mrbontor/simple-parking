@@ -1,0 +1,1 @@
+CREATE DATABASE parkir WITH OWNER=password LC_COLLATE='en_US.utf8' LC_CTYPE='en_US.utf8' ENCODING='UTF8';

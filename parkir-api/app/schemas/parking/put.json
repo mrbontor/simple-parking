@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["clockOut"],
+    "properties": {
+        "clockOut": { 
+            "type": "string",
+            "format": "dateLongIndo",
+            "errorMessage": {
+                "format": "Clock In must be string date with YYYY-MM-DD hh:mm:ss hours format.",
+                "type": "Clock In must be string date"
+            },
+            "default": null
+        },
+        "status": {
+            "type": "boolean",
+            "enum": [true, false],
+            "default": false
+        }
+    },
+    "additionalProperties": false,
+    "errorMessage": {
+        "type": "should be an object",
+        "required": {
+            "clockOut": "Clock Out is required!"
+        }
+    }
+}
