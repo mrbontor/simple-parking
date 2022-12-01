@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+    parkir-db:
+        image: postgres:14.1-alpine
+        container_name: parkir-db
+        environment:
+            ALLOW_EMPTY_PASSWORD: 'no'
+            POSTGRES_USER: 'password'
+            POSTGRES_PASSWORD: 'username'
+            POSTGRES_DB: 'parkir'
+        volumes:
+            - data:/var/lib/postgresql/data
+        restart: always
+        ports:
+            - "5432:5432"
+    
+    parkir-api:
+        build: ./parkir-api
+        container_name: parkir-api
+        ports:
+            - "3000:3000"
+        depends_on:
+            - parkir-db
+        volumes:
+            - ./parkir-api:/app
+            - ./parkir-api/node_modules:/app/node_modules
+
+volumes:
+    data:
+
+networks:
+    default:
+        external: true
+        name: keda-tech

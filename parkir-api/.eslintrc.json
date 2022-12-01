@@ -1,0 +1,42 @@
+{
+    "root": true,
+    "extends": ["plugin:prettier/recommended", "plugin:import/errors", "plugin:import/warnings", "eslint:recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error",
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off",
+        "no-unused-vars": "warn",
+        "no-unused-expressions": "warn",
+        "one-var": ["off", "never"],
+        "arrow-spacing": "error",
+        "keyword-spacing": ["warn", { "before": true, "after": true }],
+        "space-before-blocks": ["warn", "always"],
+        "no-mixed-spaces-and-tabs": ["warn", "smart-tabs"],
+        "no-cond-assign": "off",
+        "no-unsafe-optional-chaining": "warn",
+        "object-shorthand": ["off", "always"],
+        "valid-typeof": "error",
+        "no-unneeded-ternary": ["warn", { "defaultAssignment": true }]
+        // "no-unused-expressions": [
+        //     "warn",
+        //     { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }
+        // ]
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "settings": {
+        "import/ignore": [0, ["\\.path.js$"]]
+    },
+    "reportUnusedDisableDirectives": true
+}
+
+//source
+// /https://github.com/prettier/eslint-plugin-prettier#options
