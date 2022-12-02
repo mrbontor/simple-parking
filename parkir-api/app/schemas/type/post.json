@@ -7,8 +7,8 @@
             "type": "string",
             "minLength": 3,
             "errorMessage": {
-                "minLength": "Plate should be greater than 3 character.",
-                "type": "Plate must be string"
+                "minLength": "Name should be greater than 3 character.",
+                "type": "Name must be string"
             }
         },
         "description": {
@@ -28,7 +28,7 @@
     "errorMessage": {
         "type": "should be an object",
         "required": {
-            "name": "Plate is required!"
+            "name": "Name is required!"
         }
     }
 }
