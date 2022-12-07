@@ -1,41 +1,47 @@
 const Sequelize = require('sequelize');
 const { TransportType } = require('../../models/parkir-db')
-
+const { UnprocessableEntityError, BadRequestError, NotFoundError, ApplicationError } = require('../../helpers/exceptions');
 module.exports = {
     save: async (payload) => {
-        return await TransportType
-        .create(payload)
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.create(payload)            
+        } catch (error) {
+            throw new NotFoundError('Something went wrong')
+        }
     },
     getById: async (id) => {
-        return await TransportType
-        .findByPk(id)
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.findByPk(id)            
+        } catch (error) {
+            throw new NotFoundError('Data not found!')
+        }
     },
     getBy: async (where) => {
-        return await TransportType
-        .findAll({ where: where })
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.findAll({ where: where })            
+        } catch (error) {
+            throw new NotFoundError('Data not found!')
+        }
     },
     getAll: async () => {
-        return await TransportType
-        .findAll({})
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.findAll({})            
+        } catch (error) {
+            throw new NotFoundError('Data not found!')
+        }
     },
     update: async (payload, id) => {
-        return await TransportType
-        .update(payload, {where: { id: id } })
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.update(payload, {where: { id: id } })            
+        } catch (error) {
+            throw new NotFoundError('Data not found!')
+        }
     },
     remove: async (id) => {
-        return await TransportType
-        .destroy({where: { id: id } })
-        .then(data => data)
-        .catch(err => err.message);
+        try {
+            return await TransportType.destroy({where: { id: id } })            
+        } catch (error) {
+            throw new NotFoundError('Data not found!')
+        }
     },
 }

@@ -1,7 +1,7 @@
 const Validator = require('../../helpers/validateSchema');
 const { ParkingSchema } = require('../../schemas');
 const { ParkingRepository, TransportTypeRepository } = require('../../repositories');
-const { UnprocessableEntityError, BadRequestError } = require('../../helpers/exceptions');
+const { UnprocessableEntityError, BadRequestError, NotFoundError, ApplicationError } = require('../../helpers/exceptions');
 const { TimeLeft } = require('../../helpers/utils');
 const clientTimezone = 'Asia/Jakarta'
 
@@ -18,34 +18,34 @@ module.exports = {
     createParking: async (payload) => {
         
         const data = await Validator.validateSchema(payload, ParkingSchema.POST);
-        const isExist = await ParkingRepository.getByPlate(payload.plate, false);
+        const isExist = await ParkingRepository.getByPlate(payload.plate, true);
         if (isExist && isExist.length > 0) {
             throw new UnprocessableEntityError('The transport need to clock out first!');
         }
         
         const type = await TransportTypeRepository.getById(payload.typeId);
-        if (!type) throw new BadRequestError('Type Transport not found!');
+        if (!type) throw new NotFoundError('Type Transport not found!');
 
         let newPayload = data;
         newPayload.clockIn = dayjs(newPayload.clockIn).format() || dayjs.format();
         newPayload.amount = 0;
         
         const result = await ParkingRepository.save(newPayload);
-        if (!result) throw new BadRequestError('Type Transport not found!');
+        if (!result) throw new ApplicationError('Something went wrong, please try again!');
 
         return result;
     },
     getParking: async (id) => {
-        const transportType = await ParkingRepository.getById(id);
-        if (!transportType)  throw new BadRequestError('Type Transport is not found!');
+        const parking = await ParkingRepository.getById(id);
+        if (!parking)  throw new NotFoundError('Parkir Id is not found!');
 
-        return transportType;
+        return parking;
     },
     updateParking: async (id, payload) => {
         const data = await Validator.validateSchema(payload, ParkingSchema.PUT);
         const isExist = await ParkingRepository.getByPlate(payload.plate);
 
-        if (!isExist) throw new BadRequestError('Type Transport not found!');
+        if (!isExist) throw new NotFoundError('Parkir Id not found!');
         
         return await ParkingRepository.update(id, data);
     },
@@ -53,26 +53,30 @@ module.exports = {
     patchParking: async (id, payload) => {
         const data = await Validator.validateSchema(payload, ParkingSchema.PUT);
         const isExist = await ParkingRepository.getById(id);
-        
+        if (!isExist)  throw new NotFoundError('Parkir Id is not found!');
+
+        let newPayload = data;
         if (isExist && isExist.status) {
             const type = await TransportTypeRepository.getById(isExist.typeId);
-    
-            let newPayload = data;
+            if (!type) throw new UnprocessableEntityError('Type transport not valid!');
+            
             newPayload.clockOut = dayjs(data.clockOut).format() || dayjs.format();
             const lifeTime = TimeLeft(isExist.clockIn, data.clockOut)
             
             newPayload.amount = setPrice(lifeTime, type.name);
-            return await ParkingRepository.update(newPayload, isExist.id);
-        }else{
-            throw new UnprocessableEntityError('The transport need to clock in first!');
         }
+        return await ParkingRepository.update(newPayload, isExist.id);
     },
     getParkings: async (payload = {}) => {
         const data = await Validator.validateSchema(payload, ParkingSchema.GET);
-        console.log(data);
-        return await ParkingRepository.findAdvance(data)
+        const parking = await ParkingRepository.findAdvance(data)
+        if (parking && parking.length === 0)  throw new NotFoundError('No data');
+        return parking;
     },
     remove: async (id) => {
+        const parking = await ParkingRepository.getById(id);
+        if (!parking)  throw new NotFoundError('Parkir Id is not found!');
+        if (parking && parking.status) throw new UnprocessableEntityError('Sorry, you cant remove this, the transport still inside!');
         return await ParkingRepository.remove(id);
     },
 }

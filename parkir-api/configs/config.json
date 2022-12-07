@@ -9,7 +9,7 @@
             "dialect": "postgres",
             "synchronize": true,
             "timezone": "+7:00",
-            "logging": false
+            "logging": true
         }
     },
     "production": {
@@ -22,7 +22,7 @@
             "dialect": "postgres",
             "synchronize": true,
             "timezone": "+7:00",
-            "logging": false
+            "logging": true
         }
     }
 }

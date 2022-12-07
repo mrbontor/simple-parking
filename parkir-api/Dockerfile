@@ -1,9 +1,6 @@
 FROM node:14-alpine
 MAINTAINER mrbontor@gmail.com
 
-# Replace shell with bash so we can source files
-RUN ln -s /bin/sh /bin/bash
-
 RUN apk update; apk add tzdata
 
 # create app directory

@@ -5,10 +5,10 @@
     "properties": {
         "name": {
             "type": "string",
-            "minLength": 3,
+            "enum": ["mobil", "motor"],
             "errorMessage": {
-                "minLength": "Name should be greater than 3 character.",
-                "type": "Name must be string"
+                "type": "Please select one from the options",
+                "enum": "Only allowed for mobil and motor"
             }
         },
         "description": {
