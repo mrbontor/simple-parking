@@ -5,36 +5,44 @@ const chaiaspromise = require('chai-as-promised');
 chai.use(chaiaspromise);
 const sinon = require('sinon');
 
-const { TransportTypeService } = require('../../app/services');
-const { TransportTypeRepository } = require('../../app/repositories');
-const { TransportTypeSchema } = require('../../app/schemas');
+const { ParkingService } = require('../../app/services');
+const { ParkingRepository, TransportTypeRepository } = require('../../app/repositories');
+const { ParkingSchema } = require('../../app/schemas');
 
 const Validator = require('../../app/helpers/validateSchema');
 
+const mockParking = require('../mocks/parking');
 const mockType = require('../mocks/type');
-let ID = 1;
-describe('TransportTypeService.spec', function () {
-    let validatorStub, getByStub, saveStub, getByIdStub, getAllStub, updateStub;
+let ID = 2;
+
+describe('ParkingService.spec', function () {
+    let validatorStub, getByPlateStub, saveStub, getByIdStub, getByIdTypeStub, getAllStub, updateStub;
     let response = {};
 
     let payload = {
-        name: 'motor',
-        description: 'motor',
+        typeId: 2,
+        plate: 'AC 1234 MBL',
+        color: 'black',
+        clockIn: '2022-11-02 10:10:10',
     };
     beforeEach(async () => {
         validatorStub = sinon.spy(Validator, 'validateSchema');
-        getByStub = sinon.stub(TransportTypeRepository, 'getBy');
-        getByIdStub = sinon.stub(TransportTypeRepository, 'getById');
-        saveStub = sinon.stub(TransportTypeRepository, 'save');
-        updateStub = sinon.stub(TransportTypeRepository, 'update');
-        deleteStub = sinon.stub(TransportTypeRepository, 'remove');
-        getAllStub = sinon.stub(TransportTypeRepository, 'getAll');
+        getByPlateStub = sinon.stub(ParkingRepository, 'getByPlate');
+        getByIdTypeStub = sinon.stub(TransportTypeRepository, 'getById');
+        saveStub = sinon.stub(ParkingRepository, 'save');
+
+        getByIdStub = sinon.stub(ParkingRepository, 'getById');
+        getAllStub = sinon.stub(ParkingRepository, 'findAdvance');
+        updateStub = sinon.stub(ParkingRepository, 'update');
+        deleteStub = sinon.stub(ParkingRepository, 'remove');
     });
 
     afterEach(() => {
         validatorStub.restore();
-        getByStub.restore();
+        getByPlateStub.restore();
+        getByIdTypeStub.restore();
         saveStub.restore();
+
         getByIdStub.restore();
         getAllStub.restore();
         updateStub.restore();
@@ -43,47 +51,55 @@ describe('TransportTypeService.spec', function () {
 
     describe('Create Type Transport', () => {
         it('Success create', async () => {
-            saveStub.returns(mockType[0]);
+            saveStub.returns(mockParking[1]);
+            getByIdTypeStub.returns(mockType[1]);
 
-            response = await TransportTypeService.createTransportType(payload);
+            response = await ParkingService.createParking(payload);
+
             expect(validatorStub.calledOnce).to.be.true;
-            expect(getByStub.calledOnce).to.be.true;
+            expect(getByPlateStub.calledOnce).to.be.true;
+            expect(getByIdTypeStub.calledOnce).to.be.true;
             expect(saveStub.calledOnce).to.be.true;
 
-            expect(response).to.have.property('id').to.equal(1);
-            expect(response).to.have.property('name').to.equal(payload.name);
-            expect(response).to.have.property('description').to.equal(payload.description);
+            expect(response).to.have.property('id').to.equal(2);
+            expect(response).to.have.property('plate').to.equal(payload.plate);
+            expect(response).to.have.property('typeId').to.equal(payload.typeId);
+            expect(response).to.have.property('clockIn').to.equal(new Date(payload.clockIn).toISOString());
+            expect(response).to.have.property('clockOut').to.equal(null);
             expect(response).to.have.property('status').to.be.true;
         });
 
-        it('Validation Error', async () => {
-            payload = {};
+        it('Type notFoundError Error', async () => {
+            getByIdTypeStub.returns(null);
             try {
-                await TransportTypeService.createTransportType(payload);
+                await ParkingService.createParking({
+                    typeId: 3,
+                    plate: 'AC 1234 MBL',
+                    color: 'black',
+                    clockIn: '2022-11-02 10:10:10',
+                });
             } catch (error) {
                 expect(validatorStub.calledOnce).to.be.true;
-                expect(getByStub.calledOnce).to.be.false;
+                expect(getByPlateStub.calledOnce).to.be.true;
                 expect(saveStub.calledOnce).to.be.false;
 
                 expect(error.status).to.equal(false);
-                expect(error.errors).to.have.lengthOf.at.least(1);
-                expect(error.statusCode).to.equal(400);
-                expect(error.message).to.equal('Validation Error!');
+                expect(error.statusCode).to.equal(404);
+                expect(error.message).to.equal('Type Transport not found!');
             }
         });
 
         it('Validation Error', async () => {
-            payload.name = 'tets';
             try {
-                await TransportTypeService.createTransportType(payload);
+                await ParkingService.createParking({});
             } catch (error) {
                 expect(validatorStub.calledOnce).to.be.true;
-                expect(getByStub.calledOnce).to.be.false;
+                expect(getByPlateStub.calledOnce).to.be.false;
+                expect(getByIdTypeStub.calledOnce).to.be.false;
                 expect(saveStub.calledOnce).to.be.false;
 
                 expect(error.status).to.equal(false);
                 expect(error.errors).to.have.lengthOf.at.least(1);
-                expect(error.errors[0].message).to.equal('Only allowed for mobil and motor');
                 expect(error.statusCode).to.equal(400);
                 expect(error.message).to.equal('Validation Error!');
             }
@@ -92,37 +108,39 @@ describe('TransportTypeService.spec', function () {
 
     describe('Get One ', function () {
         it('Success GET', async () => {
-            getByIdStub.returns(mockType[0]);
-            response = await TransportTypeService.getTransportType(ID);
+            getByIdStub.returns(mockParking[1]);
+            response = await ParkingService.getParking(ID);
 
             expect(getByIdStub.calledOnce).to.be.true;
 
-            expect(response).to.have.property('id').to.equal(1);
-            expect(response).to.have.property('name').to.equal('motor');
-            expect(response).to.have.property('description').to.equal('motor');
+            expect(response).to.have.property('id').to.equal(2);
+            expect(response).to.have.property('plate').to.equal(payload.plate);
+            expect(response).to.have.property('typeId').to.equal(payload.typeId);
+            expect(response).to.have.property('clockIn').to.equal(new Date(payload.clockIn).toISOString());
+            expect(response).to.have.property('clockOut').to.equal(null);
             expect(response).to.have.property('status').to.be.true;
         });
 
         it('Error Not found', async () => {
             ID = 'error';
             try {
-                await TransportTypeService.getTransportType(ID);
+                await ParkingService.getParking(ID);
             } catch (error) {
                 expect(getByIdStub.calledOnce).to.be.true;
 
                 expect(error.status).to.equal(false);
                 expect(error.errors).to.equal(null);
                 expect(error.statusCode).to.equal(404);
-                expect(error.message).to.equal('Type Transport is not found!');
+                expect(error.message).to.equal('Parkir Id is not found!');
             }
         });
     });
 
     describe('Get All ', function () {
         it('Success GET', async () => {
-            getAllStub.returns(mockType);
+            getAllStub.returns(mockParking);
 
-            response = await TransportTypeService.getTransportTypes();
+            response = await ParkingService.getParkings();
 
             expect(getAllStub.calledOnce).to.be.true;
             expect(response).to.have.to.have.length(2);
@@ -131,40 +149,62 @@ describe('TransportTypeService.spec', function () {
         it('Error Not found', async () => {
             getAllStub.returns([]);
             try {
-                await await TransportTypeService.getTransportTypes();
+                await await ParkingService.getParkings();
             } catch (error) {
                 expect(error.status).to.equal(false);
                 expect(error.errors).to.equal(null);
                 expect(error.statusCode).to.equal(404);
-                expect(error.message).to.equal('Type transport not found!');
+                expect(error.message).to.equal('No data');
             }
         });
     });
 
     let payloadUpdate = {
-        name: 'motor',
-        description: 'motor',
+        clockOut: '2022-11-20 18:00:00',
     };
 
-    describe('Update Type Transport', () => {
+    describe('Update Status Parking', () => {
+        ID = 2;
+        let dataUpdated = {
+            id: 2,
+            plate: 'AC 1234 MBL',
+            typeId: 2,
+            clockIn: '2022-11-02T03:10:10.000Z',
+            clockOut: new Date(payloadUpdate.clockOut).toISOString(),
+            amount: 0,
+            description: 'this is for create',
+            status: true,
+            type: {
+                type_id: 2,
+                name: 'mobil',
+            },
+        }
         it('Success Update', async () => {
-            getByIdStub.returns(mockType[0]);
-            updateStub.returns();
+            updateStub.returns(dataUpdated);
+            getByIdStub.returns(mockParking[1]);
+            getByIdTypeStub.returns(mockType[1]);
 
-            response = await TransportTypeService.updateTransportType(ID, payloadUpdate);
-
+            response = await ParkingService.patchParking(ID, payloadUpdate);
             expect(validatorStub.calledOnce).to.be.true;
             expect(getByIdStub.calledOnce).to.be.true;
+            expect(getByIdTypeStub.calledOnce).to.be.true;
             expect(updateStub.calledOnce).to.be.true;
+
+            expect(response).to.have.property('id').to.equal(2);
+            expect(response).to.have.property('plate').to.equal(dataUpdated.plate);
+            expect(response).to.have.property('typeId').to.equal(dataUpdated.typeId);
+            expect(response).to.have.property('clockIn').to.equal(dataUpdated.clockIn);
+            expect(response).to.have.property('clockOut').to.equal(new Date(payloadUpdate.clockOut).toISOString());
+            expect(response).to.have.property('status').to.be.true;
         });
 
         it('Validation Error', async () => {
-            payloadUpdate = {};
             try {
-                await TransportTypeService.updateTransportType(ID, payloadUpdate);
+                await ParkingService.patchParking(ID, {});
             } catch (error) {
                 expect(validatorStub.calledOnce).to.be.true;
                 expect(getByIdStub.calledOnce).to.be.false;
+                expect(getByIdTypeStub.calledOnce).to.be.false;
                 expect(updateStub.calledOnce).to.be.false;
 
                 expect(error.status).to.equal(false);
@@ -175,12 +215,15 @@ describe('TransportTypeService.spec', function () {
         });
 
         it('Validation Error', async () => {
-            payloadUpdate.name = 'tets';
+            getByIdStub.returns({});
             try {
-                await TransportTypeService.updateTransportType(ID, payloadUpdate);
+                await ParkingService.patchParking('', {
+                    clockOut: '2022-11-20 18:00:00',
+                });
             } catch (error) {
                 expect(validatorStub.calledOnce).to.be.true;
-                expect(getByIdStub.calledOnce).to.be.false;
+                expect(getByIdStub.calledOnce).to.be.true;
+                expect(getByIdTypeStub.calledOnce).to.be.false;
                 expect(updateStub.calledOnce).to.be.false;
 
                 expect(error.status).to.equal(false);
@@ -194,25 +237,44 @@ describe('TransportTypeService.spec', function () {
 
     describe('Delete Type Transport', function () {
         it('Success D', async () => {
+            getByIdStub.returns(mockParking[0]);
             deleteStub.returns();
-            response = await TransportTypeService.remove(ID);
+            response = await ParkingService.remove(1);
 
+            expect(getByIdStub.calledOnce).to.be.true;
             expect(deleteStub.calledOnce).to.be.true;
         });
 
-        it('Error Not found', async () => {
+        it('Cant Delete UnprocessableEntityError', async () => {
             ID = 'error';
             try {
-                await TransportTypeService.remove(ID);
+                getByIdStub.returns(mockParking[1]);
+                deleteStub.returns();
+                await ParkingService.remove(2);
             } catch (error) {
-                console.log(error);
-                expect(deleteStub.calledOnce).to.be.true;
+                expect(getByIdStub.calledOnce).to.be.true;
+                expect(deleteStub.calledOnce).to.be.false;
+
+                expect(error.status).to.equal(false);
+                expect(error.errors).to.equal(null);
+                expect(error.statusCode).to.equal(422);
+                expect(error.message).to.equal('Sorry, you cant remove this, the transport still inside!');
+            }
+        });
+
+        it('Error Not found', async () => {
+            try {
+                getByIdStub.returns({});
+                await ParkingService.remove(5);
+            } catch (error) {
+                expect(getByIdStub.calledOnce).to.be.true;
+                expect(deleteStub.calledOnce).to.be.false;
 
                 expect(error.status).to.equal(false);
                 expect(error.errors).to.equal(null);
                 expect(error.statusCode).to.equal(404);
-                expect(error.message).to.equal('Type Transport is not found!');
+                expect(error.message).to.equal('Parkir Id is not found!');
             }
-        });
+        });       
     });
 });

@@ -59,7 +59,8 @@ module.exports = {
         let conditionType = {
             attributes: [['id', 'type_id'], 'name'],
             model: TransportType,
-            as: 'type'
+            as: 'type',
+            required: true
         }
         if( typeof payload.type !== 'undefined' ){
             conditionType.where = { name: { [Op.in] : payload.type.split(',')} }

@@ -1,5 +1,10 @@
 version: "3.8"
 
+networks:
+    default:
+        external: true
+        name: keda-tech
+
 services:
     parkir-db:
         image: postgres:14.1-alpine
@@ -29,11 +34,7 @@ services:
             - ./parkir-api:/app
             - ./parkir-api/node_modules:/app/node_modules
 
+
 volumes:
     data:
         driver: local
-
-networks:
-    default:
-        external: true
-        name: keda-tech

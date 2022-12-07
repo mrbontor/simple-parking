@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         underscored: true,
     });
     Parking.associate = function associate(models) {
-        Parking.hasOne(models.TransportType, {
+        Parking.belongsTo(models.TransportType, {
             foreignKey: 'id',
             allowNull: false,
             as: 'type'
