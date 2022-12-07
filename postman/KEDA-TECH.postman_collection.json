@@ -1,0 +1,2617 @@
+{
+	"info": {
+		"_postman_id": "677a641b-3d0c-42c2-881a-f393800914ef",
+		"name": "KEDA-TECH",
+		"description": "Simple Parking API\n\nMain logic is on the Parking Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16017716"
+	},
+	"item": [
+		{
+			"name": "TYPE",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"motor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/types",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"types"
+							]
+						},
+						"description": "Create Type Transport , use JSON payload"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"mobil\",\n    \"description\": \"mobil\",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/v1/types",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-DlhFzlijxCvesIokAnVXRD/x6ws\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:09:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"mobil\",\n        \"description\": \"mobil\",\n        \"status\": true\n    }\n}"
+						},
+						{
+							"name": "Success with only field name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"motor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/types",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-O6O042fLxL5u8Ao2lEkwNN/x7QY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:09:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"motor\",\n        \"description\": null,\n        \"status\": true\n    }\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/types",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"79-2TZHhANDcgUCDJTQYVl00fiYxUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:07:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"name\",\n            \"key\": \"required\",\n            \"message\": \"Name is required!\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Invalid Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"motors\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/types",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "132"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"84-+deoZANeHja/3/kj/iDRrNbg6v0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 12:05:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"name\",\n            \"key\": \"enum\",\n            \"message\": \"Only allowed for mobil and motor\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/types",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"types"
+							]
+						},
+						"description": "Fetch all list `Type Transport`"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/types",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-+MV78kE4zG+XXFnDr68Dq9DpjI4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:11:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"mobil\",\n            \"description\": \"mobil\",\n            \"status\": true\n        },\n        {\n            \"id\": 2,\n            \"name\": \"motor\",\n            \"description\": null,\n            \"status\": true\n        },\n        {\n            \"id\": 3,\n            \"name\": \"honda\",\n            \"description\": null,\n            \"status\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GET ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/types/5",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"types",
+								"5"
+							]
+						},
+						"description": "Fetch a single `Type Transport`"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/types/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"types",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-DlhFzlijxCvesIokAnVXRD/x6ws\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:12:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"mobil\",\n        \"description\": \"mobil\",\n        \"status\": true\n    }\n}"
+						},
+						{
+							"name": "Not found error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/types/5",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types",
+										"5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-8tu+aABvULlx/CsOJVNolN1uoho\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:12:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Type Transport is not found!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"mobil\",\n    \"description\": \"for mobil\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/types/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"types",
+								"1"
+							]
+						},
+						"description": "Update `Type Transport`, use `JSON` payload to update a type"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"mobil\",\n    \"description\": \"for mobil\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/v1/types/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"types",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a-bAsFyilMr4Ra1hIU5PyoyFRunpI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:13:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Validation error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/types/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"79-2TZHhANDcgUCDJTQYVl00fiYxUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:13:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"name\",\n            \"key\": \"required\",\n            \"message\": \"Name is required!\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Not found error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"mobil\",\n    \"description\": \"for mobil\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/types/7",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"types",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-KE1J1TEEmxAva7kXEZm3y6IGGDs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:14:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Type Transport not found!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/types/3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"types",
+								"3"
+							]
+						},
+						"description": "Delete a single `Type Transport` using `ID`"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/types/3",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"types",
+										"3"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a-bAsFyilMr4Ra1hIU5PyoyFRunpI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:15:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "CRUD for `Type Transpor`t, use `JSON` payload."
+		},
+		{
+			"name": "PARKING",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"typeId\": 2,\n    \"plate\": \"AC 1234 MTR\",\n    \"color\": \"black\",\n    \"clockIn\": \"2022-11-02 10:10:10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/parking",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"parking"
+							]
+						},
+						"description": "Create `Parking` use `JSON` payload to create data"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"typeId\": 2,\n    \"plate\": \"AC 1234 ASD\",\n    \"color\": \"red\",\n    \"clockIn\": \"2022-11-02 10:10:10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/v1/parking",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"parking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-j8brffjdoqsgBjm0nqtKjfdy3kI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:17:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"typeId\": 2,\n        \"plate\": \"AC 1234 ASD\",\n        \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n        \"description\": null,\n        \"status\": true,\n        \"amount\": 0,\n        \"clockOut\": null\n    }\n}"
+						},
+						{
+							"name": "Type not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"typeId\": 5,\n    \"plate\": \"AC 1234 ASD\",\n    \"color\": \"red\",\n    \"clockIn\": \"2022-11-02 10:10:10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-KE1J1TEEmxAva7kXEZm3y6IGGDs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:18:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Type Transport not found!\"\n}"
+						},
+						{
+							"name": "Duplicate Clock In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"typeId\": 2,\n    \"plate\": \"AC 1234 MTR\",\n    \"color\": \"black\",\n    \"clockIn\": \"2022-11-02 10:10:10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-VgkiSyOKzwW3/yxiw9IJhpvzgFo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:39:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"The transport need to clock out first!\"\n}"
+						},
+						{
+							"name": "Validation error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "355"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"163-ef+m6RFxEH4bPf8qRyIspMJAgSQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:17:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"typeId\",\n            \"key\": \"required\",\n            \"message\": \"must have required property 'typeId'\"\n        },\n        {\n            \"param\": \"plate\",\n            \"key\": \"required\",\n            \"message\": \"Plate is required!\"\n        },\n        {\n            \"param\": \"color\",\n            \"key\": \"required\",\n            \"message\": \"Transport color is required!\"\n        },\n        {\n            \"param\": \"clockIn\",\n            \"key\": \"required\",\n            \"message\": \"Clock In is required!\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/parking",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"parking"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2022-11-01",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2022-12-02",
+									"disabled": true
+								},
+								{
+									"key": "amountFrom",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "amountTo",
+									"value": "1000000",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "motor",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fetch all data `Parking`"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/parking",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"parking"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2022-11-01",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-04",
+											"disabled": true
+										},
+										{
+											"key": "amountFrom",
+											"value": "1000",
+											"disabled": true
+										},
+										{
+											"key": "amountTo",
+											"value": "1000000",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "motor",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "394"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18a-zqZ/Z3ZNNu3m1fVPNr559lt5A8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:19:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"plate\": \"AC 1234 ASD\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": null,\n            \"amount\": 0,\n            \"description\": null,\n            \"status\": true,\n            \"type\": {\n                \"type_id\": 1,\n                \"name\": \"mobil\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"plate\": \"AC 1234 MTR\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": null,\n            \"amount\": 0,\n            \"description\": null,\n            \"status\": true,\n            \"type\": {\n                \"type_id\": 2,\n                \"name\": \"motor\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success with filter date ranges",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking?startDate=2022-11-01&endDate=2022-12-02",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2022-11-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-02"
+										},
+										{
+											"key": "amountFrom",
+											"value": "1000",
+											"disabled": true
+										},
+										{
+											"key": "amountTo",
+											"value": "1000000",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "motor",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "394"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18a-zqZ/Z3ZNNu3m1fVPNr559lt5A8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:20:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"plate\": \"AC 1234 ASD\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": null,\n            \"amount\": 0,\n            \"description\": null,\n            \"status\": true,\n            \"type\": {\n                \"type_id\": 1,\n                \"name\": \"mobil\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"plate\": \"AC 1234 MTR\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": null,\n            \"amount\": 0,\n            \"description\": null,\n            \"status\": true,\n            \"type\": {\n                \"type_id\": 2,\n                \"name\": \"motor\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success with filter type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking?type=motor",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2022-11-01",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-02",
+											"disabled": true
+										},
+										{
+											"key": "amountFrom",
+											"value": "1000",
+											"disabled": true
+										},
+										{
+											"key": "amountTo",
+											"value": "1000000",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "motor"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"db-NSWnjuegIpRKfiB7jQNMraHmfQU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:20:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"plate\": \"AC 1234 MTR\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": null,\n            \"amount\": 0,\n            \"description\": null,\n            \"status\": true,\n            \"type\": {\n                \"type_id\": 2,\n                \"name\": \"motor\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success with filter by amount",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking?amountFrom=1000&amountTo=1000000",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2022-11-01",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-02",
+											"disabled": true
+										},
+										{
+											"key": "amountFrom",
+											"value": "1000"
+										},
+										{
+											"key": "amountTo",
+											"value": "1000000"
+										},
+										{
+											"key": "type",
+											"value": "motor",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f5-PxesEUXF3o/qMQ/w+L8Sn/8uY6Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 12:14:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"plate\": \"AC 1234 ASD\",\n            \"typeId\": 2,\n            \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n            \"clockOut\": \"2022-11-02T11:00:00.000Z\",\n            \"amount\": 2000,\n            \"description\": null,\n            \"status\": false,\n            \"type\": {\n                \"type_id\": 1,\n                \"name\": \"mobil\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "No data found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking?type=motorsss",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2022-11-01",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-02",
+											"disabled": true
+										},
+										{
+											"key": "amountFrom",
+											"value": "1000",
+											"disabled": true
+										},
+										{
+											"key": "amountTo",
+											"value": "1000000",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "motorsss"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-vHLYsmdW35Rc6ICjdeliJF/cY6M\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:55:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"No data\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GET ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/parking/2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"parking",
+								"2"
+							]
+						},
+						"description": "Fetch a singel ata `Parking` using `ID`"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/parking/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"parking",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-+IjTeRtciq5oPkYScIm++FbYnBI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:23:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"plate\": \"AC 1234 ASD\",\n        \"typeId\": 2,\n        \"clockIn\": \"2022-11-02T03:10:10.000Z\",\n        \"clockOut\": null,\n        \"amount\": 0,\n        \"description\": null,\n        \"status\": true\n    }\n}"
+						},
+						{
+							"name": "GET ONE",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-lHj5ggQMU+WnUUIw0y6QsimTchw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:46:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Parkir Id is not found!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clockOut\": \"2022-11-02 18:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/parking/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"parking",
+								"4"
+							]
+						},
+						"description": "This `Endpoint` is used to handle the bisnis logic, therefore there are `4 Validation` for request payload"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clockOut\": \"2022-11-02 18:00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/v1/parking/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"parking",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-vQ6UKT7+Du7Yo1w4fetvCeJ7+Vo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:47:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        1\n    ]\n}"
+						},
+						{
+							"name": "Duplicate Clock Out",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clockOut\": \"2022-11-02 18:00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-ZgwiwmXyCZss43rapGjv1qRVHyY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:56:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"The transport need to clock in first!\"\n}"
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clockOut\": \"2022-11-02 18:00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-lHj5ggQMU+WnUUIw0y6QsimTchw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 12:01:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Parkir Id is not found!\"\n}"
+						},
+						{
+							"name": "Validation additional error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clockIn\": \"2022-11-02 18:00:00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-DYCIyi++lhsiTalFq5GkLW6mmYg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 12:01:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"clockIn\",\n            \"key\": \"additionalProperties\",\n            \"message\": \"must NOT have additional properties\"\n        },\n        {\n            \"param\": \"clockOut\",\n            \"key\": \"type\",\n            \"message\": \"Clock In must be string date\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "132"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"84-SMB28oFojf0IrNNsI15tNrIhVN0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 12:01:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Validation Error!\",\n    \"errors\": [\n        {\n            \"param\": \"clockOut\",\n            \"key\": \"type\",\n            \"message\": \"Clock In must be string date\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/parking/2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"parking",
+								"2"
+							]
+						},
+						"description": "Remove a single data `Parking` by `ID`"
+					},
+					"response": [
+						{
+							"name": "DELETE",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/v1/parking/3",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"parking",
+										"3"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a-bAsFyilMr4Ra1hIU5PyoyFRunpI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:40:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-lHj5ggQMU+WnUUIw0y6QsimTchw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:45:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Parkir Id is not found!\"\n}"
+						},
+						{
+							"name": "Cant remove",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/parking/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"parking",
+										"2"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-access-token, Authorization, tdid"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET,PUT, OPTIONS, DELETE, PATCH"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-jo3Nr3fo+/VKEUQF1thbp33pHb8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Dec 2022 11:45:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Sorry, you cant remove this, the transport still inside!\"\n}"
+						}
+					]
+				}
+			],
+			"description": "There is logic when we are creating a new Parkir, specially for the Clock In and Clock Out\n\nClock In will be handle by System, but user can also add custom time\n\nthats also happen when Updating the Parking Data\n\nPlease check it out on _PUT_ Parking API"
+		}
+	]
+}
